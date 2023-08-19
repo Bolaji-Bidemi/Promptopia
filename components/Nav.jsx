@@ -154,11 +154,11 @@ const Nav = () => {
                 </Link>
                 <button
                   type="button"
-                  onClick={()=>{
-                    logout;
-                    signOut;
-                    setToggleDropDown(false)
-                  }
+                  onClick={session?.user ? signOut : 
+                    logout
+                    // signOut;
+                    // setToggleDropDown(false)
+                  
                     
                     }
                   className="mt-5 w-full black_btn"
