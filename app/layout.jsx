@@ -15,12 +15,12 @@ const RootLayout = ({ children }) => {
   
   return (
     <html lang='en'>
-       <body className="">
+       <body className="min-h-full">
         <Provider>
         <div className="main" >
             <div className="gradient w-full" />
         </div>
-            <main className="app min-h-full" >
+            <main className="app h-full" >
                 <Nav  />
                 {children }
                 <Toaster />

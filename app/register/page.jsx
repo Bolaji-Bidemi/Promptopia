@@ -29,15 +29,17 @@ const Register = () => {
   const handleSubmit = async () => {
     try{
       setLoading(true)
+      setSubmitting(true)
       const response = await axios.post('/api/users/signup', user)
-      console.log("signup access", response.data)
+      
       Toast(response.data.message)
       router.push('/login')
     }catch(error){
       console.log(error.message)
-      toast.error(error.message)
+      toast.error(error.response.data.error)
     }finally{
       setLoading(false)
+      setSubmitting(false)
     }
   };
 
@@ -48,16 +50,18 @@ const Register = () => {
       user.username.length > 0
     ) {
       setDisabled(false);
+    }else{
+      setDisabled(true)
     }
   }, [user.email, user.password, user.username]);
 
   return (
-    <div className=" w-full h-full border-3 border-black flex flex-col justify-center items-center">
+    <div className=" w-full h-full flex flex-col justify-center items-center">
       <div className="w-400 text-xl font-bold py-10">
-        {loading && !disabled ? "Sign up..." : "Signup"}
+        {loading && !disabled ? "Signing up..." : "Sign up"}
       </div>
 
-      <div className="flex flex-col border-2 py-5 px-3 gap-6">
+      <div className="flex flex-col border-2 border-gray-400 py-5 px-3 gap-3 rounded-md">
         <input
           type="email"
           placeholder="Enter your email"
@@ -93,7 +97,7 @@ const Register = () => {
             </button>
           ) : (
             <button type="button" className="black_btn" onClick={handleSubmit}>
-              {submitting ? "Signup..." : "Signup"}
+              {submitting ? "Sign up..." : "Signup"}
             </button>
           )}
         </div>
