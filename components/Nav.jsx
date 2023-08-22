@@ -49,13 +49,14 @@ const Nav = () => {
 
   return (
     <nav className="flex-between mb-16 w-full pt-3">
-      <Link href="/" className=" flex gap-2 flex-center" rel="preload">
+      <Link href="/" className=" flex gap-2 flex-center">
         <Image
           src="/assets/images/logo.svg"
           alt="Promptopia logo"
           width={30}
           height={30}
           className="object-contain"
+          as="image"
         />
 
         <p className="logo_text">Promptopia</p>
@@ -65,7 +66,7 @@ const Nav = () => {
       <div className="sm:flex hidden">
         {item || session?.user ? (
           <div className="flex gap-3 md:gap-5">
-            <Link href="/create-prompt" className="black_btn" rel="preload">
+            <Link href="/create-prompt" className="black_btn">
               Create Post
             </Link>
             <button
@@ -87,6 +88,8 @@ const Nav = () => {
                 width={37}
                 height={37}
                 className="rounded-full"
+              
+                as="image"
               />
             </Link>
           </div>
@@ -105,13 +108,13 @@ const Nav = () => {
                 </button>
               ))}
             <button type="button" className="black_btn">
-              <Link href="/register" rel="preload">
+              <Link href="/register">
                 Sign up
               </Link>
             </button>
 
             <button type="button" className="black_btn">
-              <Link href="/login" rel="preload">
+              <Link href="/login">
                 Login
               </Link>
             </button>
@@ -144,6 +147,7 @@ const Nav = () => {
                   href="/profile"
                   className="dropdown_link"
                   onClick={() => setToggleDropDown(false)}
+                 
                 >
                   My Profile
                 </Link>
@@ -151,6 +155,7 @@ const Nav = () => {
                   href="/create-prompt"
                   className="dropdown_link"
                   onClick={() => setToggleDropDown(false)}
+                 
                 >
                   Create Prompt
                 </Link>
@@ -196,7 +201,7 @@ const Nav = () => {
                     </button>
                   ))}
                 <button type="button" className="black_btn">
-                  <Link href="/register" onClick={() => setOpen(false)}>
+                  <Link href="/register" onClick={() => setOpen(false)} >
                     Sign up
                   </Link>
                 </button>

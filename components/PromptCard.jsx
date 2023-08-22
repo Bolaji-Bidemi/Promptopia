@@ -2,7 +2,6 @@
 
 import {useState} from 'react'
 import {useSession} from 'next-auth/react'
-import {usePathname, useRouter} from 'next/navigation'
 import Image from 'next/image'
 import Cookies from 'js-cookie'
 
@@ -10,8 +9,7 @@ import Cookies from 'js-cookie'
 const PromptCard = ({post, handleTagClicks, handleEdit, handleDelete}) => {
   const {data : session} = useSession()
   const [copied, setCopied] = useState('')
-  const router = useRouter()
-  const path = usePathname()
+  
 
   const handleCopy = () => {
     setCopied(post.prompt)
